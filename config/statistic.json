@@ -4,6 +4,7 @@
         "collection" : "xmly_album",
         "field" : "_id",
         "type" : "count",
-        "frequence" : "day"
+        "frequence" : "day",
+        "destcollection": "statistic"
     }
 ]
