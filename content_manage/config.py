@@ -14,6 +14,7 @@ class StatisticConfig(object):
         try:
             self.__file = open(self.__path, 'r')
         except Exception, e:
+            
             return False
         
         try:

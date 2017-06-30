@@ -3,9 +3,9 @@ import sys
 import config
 import pymongo
 
-dbconfig_path = ""
+dbconfig_path = "../config/db.json"
 
-def judge_interval(before, now):
+def judge_interval(before):
     pass
 
 class DBManager(object):
@@ -37,6 +37,12 @@ class DBManager(object):
     def get_last_record(self, item):
         pass
 
+
+interval = {"day": 1, 
+            "week" : 7, 
+            "month" : 30}
+
+
 class StatisticManager(object):
     def __init__(self, path):
         self.__statistic_config = config.StatisticConfig(path)
@@ -47,5 +53,11 @@ class StatisticManager(object):
     def run(self):
         for i in range(self.__statistic_config.len()):
             item = self.__statistic_config[i]
+            fre = item["frequence"]
+            last = self.__db_manager.get_last_record(item["name"])
+            if (judge_interval(last) < item["frequence"]):
+                continue
             if(item["type"] == "count"):
                 self.__db_manager.handle_count(item["collection"], item["field"], item["destcollection"])
+            elif (item["type"] == "add"):
+                self.__db_manager.handle_add(item["collection"], item["field"], item["destcollection"])
