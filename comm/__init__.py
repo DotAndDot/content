@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-__all__ = ['log']
+__all__ = []

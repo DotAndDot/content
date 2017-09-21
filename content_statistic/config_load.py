@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 import json
-
+from logger import log
 
 
 class StatisticConfig(object):

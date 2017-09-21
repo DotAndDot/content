@@ -28,5 +28,3 @@ class CLog(object):
         self.__logger.critical(message)
 
 
-path = "../log/content.log"
-clogger = CLog(path)
