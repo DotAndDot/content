@@ -21,7 +21,7 @@ class CLog(object):
     def warning(self, message):
         self.__logger.warning(message)
 
-    def error(self, message):
+    def error(self, message): 
         self.__logger.error(message)
 
     def critical(self, message):

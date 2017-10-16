@@ -1,10 +1,38 @@
 [
     {
         "name" : "xmly",
-        "collection" : "xmly_album",
-        "field" : "_id",
-        "type" : "count",
+        "target": "statistic",
+        "options" :[
+            {
+                "source" : "xmly_album",
+                "common_fields": ["tag"],
+                "field": "audios[].playcount", 
+                "operate":"add",
+                "name":"audios"
+            },
+            {
+                "source" : "xmly_album",
+                "common_field": ["tag"], 
+                "operate":"count",
+                "name":"album"
+            },
+            {
+                "source" : "xmly_album",
+                "common_field": ["tag"], 
+                "operate":"count",
+                "field": "audios[]", 
+                "name":"album"
+            },
+            {
+                "source": {
+                    "xmly": "/var/wwww",
+                    "qt": "/var/wwww"
+                },
+                "operate":"storage",
+                "name":"album"
+            }
+        ],
         "frequence" : "day",
-        "destcollection": "statistic"
+        "mode" : "increment"
     }
 ]
